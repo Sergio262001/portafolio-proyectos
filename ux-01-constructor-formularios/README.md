@@ -1,6 +1,13 @@
-# Constructor visual de formularios
+# Formix · Constructor de formularios
 
 **Demo en vivo:** https://sergio262001.github.io/SGStudio/demos/ux-01/index.html
+
+## Páginas del prototipo
+- **Inicio**: propuesta de valor y cómo funciona
+- **Plantillas**: 4 formularios con reglas listas («Usar» o «Probar»)
+- **Editor**: construir, reglas, deshacer/rehacer y modo Simular
+- **Mis formularios**: abrir, probar y eliminar (con deshacer)
+- **Ayuda**: atajos de teclado, preguntas frecuentes y accesibilidad
 
 ## Problema
 Armar formularios con reglas condicionales es lento y propenso a errores, y casi nunca se puede probar el resultado antes de publicarlo.

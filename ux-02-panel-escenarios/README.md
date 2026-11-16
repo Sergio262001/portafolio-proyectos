@@ -1,6 +1,12 @@
-# Panel de simulación de escenarios
+# Escenaria · Simulación de escenarios
 
 **Demo en vivo:** https://sergio262001.github.io/SGStudio/demos/ux-02/index.html
+
+## Páginas del prototipo
+- **Inicio**: propuesta de valor y pasos
+- **Panel**: parámetros, gráfico, tabla y comparación de hasta 3 escenarios
+- **Informe**: resumen en lenguaje claro, imprimible o en PDF
+- **Cómo funciona**: cálculo, glosario, supuestos y límites
 
 ## Problema
 Los paneles muestran el estado actual, pero decidir exige comparar varios escenarios con muchos parámetros a la vez.
