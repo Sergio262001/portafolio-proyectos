@@ -2,17 +2,19 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: servicio-api-dev
 resources:
-  - ../../base
+- ../../base
 images:
-  - name: servicio-api
-    newName: ghcr.io/OWNER/servicio-api
-    newTag: sha-REEMPLAZAR   # el pipeline lo actualiza con el digest de la imagen
+- digest: sha256:268507c783bbb397fead48f21f7988f506108a09222dee442ef6e7cbd8e3c9e4
+  name: servicio-api
+  newName: ghcr.io/sergio262001/servicio-api
 patches:
-  - target: { kind: Rollout, name: servicio-api }
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/limits/cpu
-        value: "100m"
+- patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 1
+    - op: replace
+      path: /spec/template/spec/containers/0/resources/limits/cpu
+      value: "100m"
+  target:
+    kind: Rollout
+    name: servicio-api
