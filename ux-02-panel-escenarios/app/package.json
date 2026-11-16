@@ -1,0 +1,11 @@
+{
+  "name": "ux-02-panel-escenarios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prototipo funcional del panel de simulación de escenarios paramétricos",
+  "scripts": {
+    "start": "node serve.mjs 5174",
+    "test": "node --test tests/model.test.js"
+  }
+}

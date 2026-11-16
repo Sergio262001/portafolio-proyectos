@@ -1,0 +1,11 @@
+{
+  "name": "ux-01-constructor-formularios",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prototipo funcional del constructor visual de formularios con modo simulación",
+  "scripts": {
+    "start": "node serve.mjs",
+    "test": "node --test tests/rules.test.js"
+  }
+}
