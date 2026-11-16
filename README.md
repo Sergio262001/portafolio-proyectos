@@ -1,5 +1,9 @@
 # Portafolio de proyectos
 
+[![devops-01 CI/CD](https://github.com/Sergio262001/portafolio-proyectos/actions/workflows/devops-01-ci.yml/badge.svg)](https://github.com/Sergio262001/portafolio-proyectos/actions/workflows/devops-01-ci.yml)
+
+**Demos en vivo:** https://sergio262001.github.io/SGStudio/#/proyectos
+
 Tres proyectos de nivel avanzado para la hoja de vida.
 
 | Carpeta | Tipo | Proyecto |
