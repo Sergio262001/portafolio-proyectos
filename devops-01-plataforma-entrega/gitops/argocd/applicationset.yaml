@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: servicio-api
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+          - env: staging
+          - env: prod
+  template:
+    metadata:
+      name: "servicio-api-{{env}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/OWNER/portfolio-proyectos.git
+        targetRevision: main
+        path: "devops-01-plataforma-entrega/k8s/overlays/{{env}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "servicio-api-{{env}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true        # corrige la deriva: lo que está en git gana
+        syncOptions: [CreateNamespace=true]

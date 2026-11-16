@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: tasa-error-y-latencia
+spec:
+  args:
+    - name: service
+      value: servicio-api-canary
+  metrics:
+    - name: tasa-error
+      interval: 30s
+      count: 4
+      failureLimit: 1
+      successCondition: result[0] < 0.01        # menos del 1 % de errores 5xx
+      provider:
+        prometheus:
+          address: http://prometheus.monitoring.svc:9090
+          query: |
+            sum(rate(http_requests_total{service="{{args.service}}",code=~"5.."}[1m]))
+            /
+            sum(rate(http_requests_total{service="{{args.service}}"}[1m]))
+    - name: latencia-p95
+      interval: 30s
+      count: 4
+      failureLimit: 1
+      successCondition: result[0] < 0.3          # p95 menor a 300 ms
+      provider:
+        prometheus:
+          address: http://prometheus.monitoring.svc:9090
+          query: |
+            histogram_quantile(0.95,
+              sum(rate(http_request_duration_seconds_bucket{service="{{args.service}}"}[1m])) by (le))

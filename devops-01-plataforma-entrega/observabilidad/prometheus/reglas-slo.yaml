@@ -1,0 +1,19 @@
+groups:
+  - name: servicio-api-slo
+    rules:
+      - record: servicio:disponibilidad:ratio_5m
+        expr: |
+          1 - (
+            sum(rate(http_requests_total{service="servicio-api",code=~"5.."}[5m]))
+            /
+            sum(rate(http_requests_total{service="servicio-api"}[5m]))
+          )
+      - alert: ErrorBudgetQuemandoRapido
+        # SLO 99.9 %: quemar el presupuesto 14.4 veces más rápido que lo permitido
+        expr: (1 - servicio:disponibilidad:ratio_5m) > (14.4 * 0.001)
+        for: 5m
+        labels:
+          severidad: critica
+        annotations:
+          summary: "El presupuesto de error de servicio-api se está agotando rápido"
+          runbook: "runbooks/incidentes/error-budget.md"

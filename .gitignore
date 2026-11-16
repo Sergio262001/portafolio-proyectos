@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.tfstate
+*.tfstate.*
+.terraform/
+coverage/
+dist/
+.DS_Store
